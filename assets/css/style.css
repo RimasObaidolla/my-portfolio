@@ -1,0 +1,705 @@
+/* =================================
+   1. COLORS & GENERAL
+================================= */
+
+:root {
+    --carafe: #69524B;
+    --rose-red: #AA1945;
+    --peach: #DBB396;
+    --dark-blue: #111844;
+    --ivory: #FAF8F5;
+    --white: #FFFFFF;
+    --soft-border: rgba(105, 82, 75, .14);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+    background: var(--ivory);
+    color: var(--dark-blue);
+    line-height: 1.8;
+    min-height: 100vh;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+}
+
+.english-text {
+    font-family: "Cormorant Garamond", serif;
+    direction: ltr;
+}
+
+/* =================================
+   2. HEADER
+================================= */
+
+.site-header {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--soft-border);
+    background: rgba(250, 248, 245, .96);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    color: var(--rose-red);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.main-nav a {
+    color: var(--carafe);
+    font-size: 16px;
+    transition: color .3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--rose-red);
+}
+
+/* =================================
+   3. WELCOME
+================================= */
+
+.welcome-section {
+    padding: 100px 0 80px;
+    text-align: center;
+}
+
+.welcome-content {
+    max-width: 1000px;
+}
+
+.welcome-label {
+    color: var(--rose-red);
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.welcome-section h1 {
+    font-size: clamp(34px, 5vw, 58px);
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.welcome-description {
+    max-width: 700px;
+    margin: auto;
+    color: var(--carafe);
+    font-size: 20px;
+    line-height: 2;
+}
+
+.welcome-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 32px;
+    background: var(--rose-red);
+    color: var(--white);
+    padding: 13px 32px;
+    border-radius: 50px;
+    transition: background .3s ease, transform .3s ease;
+}
+
+.welcome-button:hover {
+    background: var(--dark-blue);
+    transform: translateY(-3px);
+}
+
+/* =================================
+   4. COVER
+================================= */
+
+.welcome-cover {
+    margin: 65px auto 25px;
+    min-height: 320px;
+    max-width: 850px;
+
+    background-image: url("../images/cover.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 1px solid var(--soft-border);
+    border-radius: 4px;
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    padding: 20px;
+
+    color: var(--carafe);
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-align: center;
+
+    text-shadow: 0 1px 5px rgba(255, 255, 255, .3);
+}
+
+.welcome-footer {
+    color: var(--carafe);
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-top: 25px;
+}
+
+/* =================================
+   5. SECTION HEADINGS
+================================= */
+
+.gallery-section,
+.contact-section {
+    padding: 90px 0;
+}
+
+.gallery-section {
+    background: rgba(219, 179, 150, .08);
+}
+
+.section-label {
+    text-align: center;
+    color: var(--rose-red);
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.section-description,
+.contact-description {
+    text-align: center;
+    color: var(--carafe);
+    font-size: 17px;
+    margin-bottom: 48px;
+}
+
+/* =================================
+   6. MASONRY GALLERY
+================================= */
+
+.gallery-grid {
+    columns: 3;
+    column-gap: 25px;
+}
+
+.gallery-item {
+    position: relative;
+    margin-bottom: 30px;
+    break-inside: avoid;
+    cursor: pointer;
+    border-radius: 4px;
+    outline-offset: 5px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: transform .45s ease, filter .45s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.025);
+    filter: brightness(.97);
+}
+
+.gallery-overlay {
+    position: static;
+    display: block;
+    background: transparent;
+    padding: 10px 4px 0;
+    opacity: 1;
+}
+
+.gallery-overlay h3 {
+    color: var(--carafe);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 21px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-align: left;
+    direction: ltr;
+}
+
+/* =================================
+   7. CONTACT
+================================= */
+
+.contact-section {
+    text-align: center;
+}
+
+.contact-description {
+    margin-bottom: 30px;
+}
+
+.contact-card {
+    max-width: 650px;
+    margin: auto;
+    padding: 42px 35px;
+    background: var(--white);
+    border: 1px solid var(--soft-border);
+    border-radius: 6px;
+    box-shadow: 0 12px 35px rgba(105, 82, 75, .06);
+}
+
+.contact-card h3 {
+    color: var(--dark-blue);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 14px 0;
+    color: var(--rose-red);
+    transition: color .3s ease;
+}
+
+.contact-link:hover {
+    color: var(--dark-blue);
+}
+
+.contact-icon {
+    color: var(--carafe);
+    font-size: 19px;
+}
+
+/* =================================
+   8. PHOTO MODAL
+================================= */
+
+.photo-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 68, .78);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+.photo-modal.active {
+    display: flex;
+    animation: modalFade .25s ease;
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: var(--ivory);
+    width: min(950px, 100%);
+    max-height: 92vh;
+    overflow-y: auto;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, .2);
+}
+
+.modal-image-wrapper {
+    background: #EFE6E0;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.modal-content img {
+    width: auto;
+    max-width: 100%;
+    max-height: 58vh;
+    height: auto;
+    object-fit: contain;
+    border-radius: 3px;
+    margin: auto;
+}
+
+.modal-details {
+    padding: 35px 45px 40px;
+}
+
+.close-modal {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(250, 248, 245, .95);
+    color: var(--dark-blue);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 5;
+    transition: background .3s ease, color .3s ease;
+}
+
+.close-modal:hover {
+    background: var(--rose-red);
+    color: var(--white);
+}
+
+.modal-label {
+    color: var(--rose-red);
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+#modal-title {
+    color: var(--dark-blue);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    direction: ltr;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#modal-description {
+    color: var(--carafe);
+    font-size: 17px;
+    line-height: 2.1;
+    margin-bottom: 25px;
+    white-space: pre-line;
+}
+
+#modal-poem {
+    border-right: 3px solid var(--rose-red);
+    padding: 8px 18px 8px 0;
+    color: var(--carafe);
+    margin: 25px 0;
+    white-space: pre-line;
+    line-height: 2.2;
+    font-size: 17px;
+}
+
+.modal-meta {
+    border-top: 1px solid var(--soft-border);
+    padding-top: 18px;
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 30px;
+    color: var(--carafe);
+    font-size: 14px;
+}
+
+/* =================================
+   9. FOOTER
+================================= */
+
+.site-footer {
+    background: #F1E9E3;
+    border-top: 1px solid var(--soft-border);
+    text-align: center;
+    padding: 35px 0;
+}
+
+.footer-logo {
+    display: inline-block;
+    color: var(--rose-red);
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.site-footer p {
+    color: var(--carafe);
+    font-size: 13px;
+}
+
+.back-to-top {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--rose-red);
+    font-size: 13px;
+    transition: color .3s ease;
+}
+
+.back-to-top:hover {
+    color: var(--dark-blue);
+}
+
+/* =================================
+   10. TABLET
+================================= */
+
+@media (max-width: 900px) {
+
+    .gallery-grid {
+        columns: 2;
+    }
+
+    .welcome-section {
+        padding: 80px 0 65px;
+    }
+
+    .modal-details {
+        padding: 30px;
+    }
+}
+
+/* =================================
+   11. MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .site-header {
+        padding: 17px 0;
+    }
+
+    .header-content {
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 23px;
+        letter-spacing: 2px;
+    }
+
+    .main-nav {
+        gap: 13px;
+    }
+
+    .main-nav a {
+        font-size: 13px;
+    }
+
+    .welcome-section {
+        padding: 65px 0 50px;
+    }
+
+    .welcome-label {
+        font-size: 11px;
+        letter-spacing: 2.5px;
+    }
+
+    .welcome-section h1 {
+        font-size: 32px;
+        margin-bottom: 18px;
+    }
+
+    .welcome-description {
+        font-size: 16px;
+    }
+
+    .welcome-button {
+        margin-top: 25px;
+        padding: 12px 25px;
+    }
+
+    .welcome-cover {
+        min-height: 190px;
+        margin-top: 45px;
+    }
+
+    .cover-title {
+        font-size: 21px;
+        letter-spacing: 2px;
+        padding: 12px;
+    }
+
+    .welcome-footer {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .gallery-section,
+    .contact-section {
+        padding: 65px 0;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .section-description,
+    .contact-description {
+        font-size: 15px;
+        margin-bottom: 32px;
+    }
+
+    .gallery-grid {
+        columns: 1;
+    }
+
+    .gallery-item {
+        margin-bottom: 25px;
+    }
+
+    .gallery-overlay h3 {
+        font-size: 20px;
+    }
+
+    .contact-card {
+        padding: 30px 18px;
+    }
+
+    .contact-card h3 {
+        font-size: 19px;
+    }
+
+    .contact-link {
+        font-size: 14px;
+        overflow-wrap: anywhere;
+    }
+
+    .photo-modal {
+        padding: 12px;
+    }
+
+    .modal-content {
+        max-height: 94vh;
+    }
+
+    .modal-image-wrapper {
+        padding: 15px;
+    }
+
+    .modal-content img {
+        max-height: 42vh;
+    }
+
+    .modal-details {
+        padding: 25px 20px 30px;
+    }
+
+    #modal-title {
+        font-size: 28px;
+    }
+
+    #modal-description,
+    #modal-poem {
+        font-size: 15px;
+    }
+
+    .modal-meta {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .close-modal {
+        width: 36px;
+        height: 36px;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+/* =================================
+   12. ACCESSIBILITY
+================================= */
+
+a:focus-visible,
+button:focus-visible,
+.gallery-item:focus-visible {
+    outline: 2px solid var(--rose-red);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
